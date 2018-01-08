@@ -1,0 +1,249 @@
+	*{
+		padding:0;
+		margin:0;
+		font-size:16px;
+		font-family: "microsoft yahei";
+		color:#1c2b36;
+	}
+	body{
+		background:#f0f3f6;
+	}
+	.container{
+		margin-top:50px;
+		//background:#f0f3f6;
+	}
+	.container .row{
+		
+	}
+	
+	.container .row .leftDiv{
+		height:600px;
+	}
+	.container .row .leftDiv .contentDiv{
+		height:572px;
+		border:1px solid #cccccc;
+		border-radius:6px;
+		margin-bottom:10px;
+		padding:10px 15px; 
+		background:#fff;
+		overflow-y: auto;
+	}
+	.container .row .leftDiv .sysMsg{
+		color:#fff;
+		background:#1c2b36;
+		display:inline-block;
+		padding:15px;
+		border-radius:6px;
+		margin-bottom:20px;
+	}
+	.container .row .leftDiv .sysMsg span{
+		color:#fff;
+	}
+	.container .row .leftDiv .sysMsg strong{
+		color:#ffa20a;
+	}
+	.container .row .leftDiv .personMsg{
+		margin-bottom:20px;
+	}
+	.container .row .leftDiv .personMsg .personMsgInfo{
+		overflow:hidden;
+		margin-bottom:10px;
+	}
+	.container .row .leftDiv .personMsg .personMsgInfo .picCircle{
+		border:1px solid #cccccc;
+		width:50px;
+		height:50px;
+		display:inline-block;
+		border-radius:100%;
+		float:left;
+	}
+	.container .row .leftDiv  .personMsg .personMsgInfo .other {
+		display:inline-block;
+		float:left;
+		margin-left:10px;
+	}
+	.container .row .leftDiv  .personMsg .personMsgInfo .other .infoName{
+		font-size:14px;
+		margin:5px 0;
+	}
+	.container .row .leftDiv  .personMsg .personMsgInfo .other .infoTime{
+		font-size:14px;
+	}
+	.container .row .leftDiv  .personMsg .personMsgContent{
+		font-size:14px;
+	}
+	.container .row .leftDiv .sendDiv{
+		height:50px;
+	}
+	.container .row .rightDiv{
+		height:606px;
+		padding:0;
+	}
+	.container .row .rightDiv>div{
+		border:1px solid #cccccc;
+		border-radius:6px;
+	}
+	.container .row .rightDiv .upDiv{
+		/*height:130px;*/
+		margin-bottom:10px;	
+		background:#fff;
+	}
+	.container .row .rightDiv .upDiv .content{
+		padding:20px;
+		position:relative;
+	}
+	.container .row .rightDiv .upDiv .content span{
+		color:#1c2b36;
+		font-size:14px;
+	}
+	.container .row .rightDiv .upDiv .content .loginLink{
+		cursor:pointer;
+		padding:0 5px;
+		color:rgb(255,162,10);	
+	}
+	
+	.container .row .rightDiv .upDiv .content .loginLink:hover{
+		color:rgba(255,162,10,0.8);	
+	}
+	.container .row .rightDiv .upDiv .content .editBtn{
+		float:right;
+		margin-top:-8px;
+		padding:10px;
+		cursor:pointer;
+	}
+	.container .row .rightDiv .upDiv .content .editBtn:hover{
+		color:#ffa20a;
+	}
+	
+	.container .row .rightDiv .upDiv .content .photoInputStyle{
+		float:right;
+		position:relative;
+		height:34px;
+		width:34px;
+		margin-top:-6px;
+		cursor:pointer;
+		display: block;
+		overflow: hidden;
+	}
+	.container .row .rightDiv .upDiv .content .photoInputStyle input{
+		width:100%;
+		height:100%;
+		opacity: 0;
+		cursor:pointer;
+		filter: alpha(opacity=0);
+	}
+	.container .row .rightDiv .upDiv .content .photoInputStyle .uploadBtn{
+		position:absolute;
+		cursor:pointer;
+		top:0px;
+		left:0px;
+		padding:10px;
+		
+		font-size:14px;
+	}
+	.container .row .rightDiv .upDiv .content .photoInputStyle:hover .uploadBtn{
+		color:#ffa20a;
+	}
+	
+	
+	.container .row .rightDiv .downDiv{
+		height:465px;
+		background:#fff;
+	}
+	.container .row .rightDiv .downDiv .content{
+		height:357px;
+		overflow-y: auto;
+	}
+	.container .row .rightDiv .downDiv .content>div{
+		padding:4px 10px;
+	}
+
+	.container .row .rightDiv .downDiv .content>div:hover{
+		background:rgba(255,162,10,0.1);
+	} 
+	
+	.container .row .rightDiv .downDiv .content>div:hover .cursorPersonList{
+		display: inline;
+	} 
+	.container .row .rightDiv .downDiv .content .cursorPersonList{
+		font-size:14px;
+		float:right;
+		cursor:pointer;
+		display: none;
+		color:rgb(255,162,10);
+	}
+	.container .row .rightDiv .downDiv .content .cursorPersonList:hover{
+		color:rgba(255,162,10,0.8);
+	}
+	.container .row .rightDiv .downDiv .footer{
+		height:45px;
+		line-height:45px;
+		padding-left:10px;
+		background:#1c2b36;
+		color:#fff;
+		font-size:14px;
+		border-radius:0 0 6px 6px;
+	}
+	.container .row .rightDiv .downDiv .footer span{
+		color:#fff;
+	}
+	.container .row .rightDiv .downDiv .content div{
+		font-size:14px;
+		line-height:30px;
+	}
+	.container .row .rightDiv .head{
+		line-height:60px;
+		padding-left:10px;
+		border-bottom:1px solid #cccccc;
+		background:#1c2b36;
+		border-radius:6px 6px 0 0;
+		color:#fff;
+		padding-right:10px;
+	}
+
+	.container .row .rightDiv .head span{
+		color:#fff;
+		margin-right:5px;
+	}
+	
+	.container .row .rightDiv .head .loginLink,.container .row .rightDiv .head .resgisterLink{
+		font-size:14px;
+		float:right;
+		cursor:pointer;
+		padding:0 5px;	
+	}
+	.container .row .rightDiv .head .loginLink:hover,.container .row .rightDiv .head .resgisterLink:hover{
+		color:#ffa20a;
+	}
+	/*上传文件按钮的样式*/
+	.fileInputStyle{
+		display:block;
+		position:absolute;
+		border:1px solid #ccc;
+		border-left:none;
+		height:46px;
+		width:50px;
+		top:0;
+		left:50px;
+	}
+	.fileInputStyle input{
+		width:100%;
+		height:100%;
+		opacity: 0;
+		filter: alpha(opacity=0);
+	}
+	.fileInputStyle span{
+		position:absolute;
+		top:11px;
+		left:14px;
+		font-size:22px;
+	}
+	.fileInputStyle:hover{
+		background:#e6e6e6;
+		border-color:#adadad;
+	}
+
+/*表情面板*/
+.emoji_container{
+	z-index:9999;
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css"></link>
+	<link rel="stylesheet" href='https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css'></link>
+	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" href='/stylesheets/index.css'></link>
+	
+	
+    <link rel="stylesheet" href="/stylesheets/emoji/jquery.mCustomScrollbar.min.css"/>
+    <link rel="stylesheet" href="/stylesheets/emoji/jquery.emoji.css"/>
+    <link rel="stylesheet" href="/stylesheets/emoji/railscasts.css"/>
+	
+	<title></title>
+	</head>
+	<body>
+		<!-- 登录弹框 -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">登录</h4>
+		      </div>
+		      <div class="modal-body">
+		         <form class='loginForm'>
+		          <div class="form-group">
+		            <label for="name" class="control-label">昵称:</label>
+		            <input type="text" class="form-control" id="name" placeholder='请输入昵称（必填）' name='name'>
+		          </div>
+		          <div class="form-group">
+		            <label for="password" class="control-label">密码:</label>
+		            <input type="password" class="form-control" id="password" placeholder='请输入密码（必填）' name='password'></textarea>
+		          </div>		   
+		        </form>
+		      </div>
+		       <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+		        <button type="button" class="btn btn-warning" id='submitForm'>确 定</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		<!-- 私聊弹框 -->
+		<div class="modal fade" id="chatModal" tabindex="-1" role="dialog" aria-labelledby="chatModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="chatModalLabel"></h4>
+		      </div>
+		      <div class="modal-body" style='padding-top:56px;'>         
+	            <div id='editor_private' class='contentTextarea' contenteditable="true" style='background:#fff;height:66px;border:1px solid #cccccc;padding:10px;overflow-y:auto;border-radius:0 6px 6px 6px;'></div>
+    			<button id='showEmojiDiv_private' class="btn btn-sm btn-default fa fa-smile-o" style='height:32px;padding:0;width:32px;position:absolute;top:24px;font-size:26px;border-bottom:0;border-radius:6px 0 0 0;'></button>
+    			
+    			<a href="javascript:;" class="fileInputStyle" style='width:32px;height:32px;top:24px;left:47px;border-radius:0 6px 0 0;border-bottom:0'>
+    				<span class='glyphicon glyphicon-picture' style='font-size:21px;top:5px;left:6px;'></span>
+	 				<input type="file" id="tupian_private" onchange='sendImg("tupian_private")' accept=".gif,.jpeg,.png,.jpg"> 
+	 			</a>		 	          
+		      </div>
+		       <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+		        <button type="button" class="btn btn-warning" id='submitChatForm'>确 定</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		
+	<div class='container'>
+		<div class='row'>
+			<div class='col-lg-8 col-md-8 col-sm-8 col-xs-8 leftDiv'>
+				<div class='contentDiv'>
+				 <div class='sysMsg'><span class='glyphicon glyphicon-bullhorn'></span> 系统：欢迎来到聊天室！</div><br/>
+				</div>
+				<div class='sendDiv' style='position:relative;'>
+					
+				 	<div id="editor_public" class='messageContent' contenteditable="true" style='background:#fff;height:46px;border:1px solid #cccccc;padding:10px 60px 10px 110px;overflow-y:auto;border-radius:6px;'></div>
+        			<button id='showEmojiDiv_public' class="btn btn-sm btn-default fa fa-smile-o" style='height:46px;min-width:50px;position:absolute;top:0;border-radius:6px 0 0 6px;font-size:25px;'></button>
+        			<button class="btn btn-sm btn-default sendMessageBtn" style='height:46px;min-width:50px;position:absolute;top:0;right:0;border-radius:0 6px 6px 0;'>
+        				<span class='glyphicon glyphicon-send'></span>
+        			</button>
+        			<a href="javascript:;" class="fileInputStyle">
+        				<span class='glyphicon glyphicon-picture'></span>
+		 				<input type="file" id="tupian_public" onchange='sendImg("tupian_public")' accept=".gif,.jpeg,.png,.jpg"> 
+		 			</a>		 
+				</div>
+			</div>
+			<div class='col-lg-4 col-md-4 col-sm-4 col-xs-4 rightDiv'>
+				<div class='upDiv'>
+					<div class='head'>
+						<span class='glyphicon glyphicon-user'></span>
+						个人信息
+						<span class='loginLink' data-toggle="modal" data-target="#myModal">登录</span>
+						<span class='resgisterLink' data-toggle="modal" data-target="#myModal">注册</span>
+					</div>
+					<div class='content'>
+						<img src="./images/photo.png" alt="" id='showUserPhoto'  style='width:50px;height:50px;border:1px solid #ccc;border-radius:100%;'/>
+						<span class='showUserName' style='position:relative;top:-10px;left:5px;'>
+							请先<span class='loginLink' data-toggle="modal" data-target="#myModal">登录</span>
+						</span>
+						<span class='glyphicon glyphicon-edit editBtn' style='display:none' data-toggle="modal" data-target='#myModal'></span>
+						<a href="javascript:;" class="photoInputStyle" style='display:none'>
+							<span class='glyphicon glyphicon-upload uploadBtn' ></span>
+							<input type="file"  id="userPhoto" onchange='uploadPhoto("userPhoto")' accept=".gif,.jpeg,.png,.jpg"> 
+						</a>
+					</div>
+				</div>
+				<div class='downDiv'>
+					<div class='head'>
+						<span class='glyphicon glyphicon-list'></span>
+						在线成员
+					</div>	
+					<div class='content'></div>
+					<div class='footer'>
+					当前在线 <span class='totalCount'>0</span> 人
+					</div>
+				</div>		
+			</div>
+		</div>
+	</div>
+	</body>
+	<script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script src="/javascripts/socket.io.js"></script>
+	<script src="/javascripts/bootstrap.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+	
+	
+
+	<script src="/javascripts/emoji/highlight.pack.js"></script>
+	<script src="/javascripts/emoji/jquery.mousewheel-3.0.6.min.js"></script>
+	<script src="/javascripts/emoji/jquery.mCustomScrollbar.min.js"></script>
+	<script src="/javascripts/emoji/jquery.emoji.min.js"></script>
+	
+	
+	<script src="/javascripts/common.js"></script>
+	<script src="/javascripts/socket.js"></script>
+	<script src="/javascripts/init.js"></script>
+	<script src="/javascripts/login.js"></script>
+	
+	
+	<script>
+
+	</script>
+</html>
